@@ -58,7 +58,7 @@ try:
     distance = elapsed*13504
     distance = distance/2
  
-    print "Distance: %.1f inches" % distance
+    print "Distance: %.1f inches, elapsed %.5f" % (distance, elapsed)
     
     if (distance > maximum_distance):
       print "too far..."
