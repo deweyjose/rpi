@@ -1,5 +1,10 @@
-blink: blink.o
-	echo blink.o
+CC=gcc
+INCLUDE_PATHS=/usr/local/include/
+CFLAGS=-std=c99 -c -I $(INCLUDE_PATHS)
 
-blink.o: blink.c
-	echo blink.c
+blink: 
+	$(CC) $(CFLAGS) -o blink blink.c -l bcm2835
+
+%.o: %.c
+	$(CC) $(CFLAGS) -o $@ $< 
+
