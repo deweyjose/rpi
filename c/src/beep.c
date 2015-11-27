@@ -7,7 +7,6 @@
 
 int main(int argc, char **argv) {
     if (!bcm2835_init()) {
-        printf("cannot init\n");
 	return 1;
     }
 
@@ -21,16 +20,15 @@ int main(int argc, char **argv) {
 	printf("read from pin %d : %d\n", TLT_PIN, value);
 	if (value == 0) {
 	    bcm2835_gpio_write(LED_PIN, HIGH);
-	    bcm2835_gpio_write(BUZ_PIN, HIGH);
+	    bcm2835_gpio_write(BUZ_PIN, LOW);
 	} else {
 	    bcm2835_gpio_write(LED_PIN, LOW);
-	    bcm2835_gpio_write(BUZ_PIN, LOW);
+	    bcm2835_gpio_write(BUZ_PIN, HIGH);
 	}
 	bcm2835_delay(500);
     }
 
     bcm2835_gpio_write(LED_PIN, LOW);
-    bcm2835_gpio_write(BUZ_PIN, LOW);
     
     bcm2835_close();
     return 0;
