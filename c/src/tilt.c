@@ -14,12 +14,12 @@ int main(int argc, char **argv) {
     bcm2835_gpio_fsel(LED_PIN, BCM2835_GPIO_FSEL_OUTP);
     bcm2835_gpio_fsel(BUZ_PIN, BCM2835_GPIO_FSEL_OUTP);
     bcm2835_gpio_fsel(TLT_PIN, BCM2835_GPIO_FSEL_INPT);
-    bcm2835_gpio_set_pud(TLT_PIN, BCM2835_GPIO_PUD_DOWN);
+    bcm2835_gpio_set_pud(TLT_PIN, BCM2835_GPIO_PUD_UP);
 
     for (int i = 0; i < 100; i++) {
 	uint8_t value = bcm2835_gpio_lev(TLT_PIN);
 	printf("read from pin %d : %d\n", TLT_PIN, value);
-	if (value == 0) {
+	if (value == 1) {
 	    bcm2835_gpio_write(LED_PIN, HIGH);
 	    bcm2835_gpio_write(BUZ_PIN, HIGH);
 	} else {
