@@ -2,10 +2,16 @@ CC=gcc
 POCKET_SPHINX_INCLUDE_PATHS=-I /usr/local/include/sphinxbase -I /usr/local/include/pocketsphinx
 CFLAGS=-std=c99 -g -pthread
 
-all: out blink button buttonmt tilt buzzer lizzy rgbled dimled
+all: out blink button buttonmt tilt buzzer lizzy rgbled dimled servo dimledpwm
 
 out:
 	mkdir out
+
+dimledpwm: out
+	$(CC) $(CFLAGS) -o out/$@ $@.c -l bcm2835
+
+servo: out
+	$(CC) $(CFLAGS) -o out/$@ $@.c -l bcm2835
 
 dimled: out
 	$(CC) $(CFLAGS) -o out/$@ $@.c -l bcm2835
